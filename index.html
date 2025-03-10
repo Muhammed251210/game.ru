@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>minecraft</title>
+<style>
+@media (max-width: 768px) {
+  h1 {
+    font-size: 102%
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  h1 {
+    font-size: 270%;
+  }
+}
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 542%;
+  }
+}
+.footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+body {
+  width: 100%;
+  margin: 0;
+}
+  div {
+    text-align: center;
+  }
+  h1 {
+    color: greenyellow;
+  }
+  button {
+    border-radius: 10px;
+    background-color: green;
+    font-size: 500%;
+  }
+  p {
+    color: saddlebrown;
+  }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+h1 {
+  text-align: center;
+}
+ .scrolled {
+ padding-top: 1rem;
+ padding-bottom: 1rem;
+ }
+ .vurgula {
+   color: yellow;
+ }
+#icerik1 {
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 100px;
+        }
+#icerik {
+  border: 1px solid #;
+  margin-top: 10px;
+        }
+#icerik1 {
+  margin-top: 200px;
+}
+#button {
+    padding: 10px;
+    background-color: #007b;
+    color: saddlebrown;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 100%
+        }
+input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+}
+     .hidden {
+            display: none;
+        }
+        .highlight {
+            background-color: yellow;
+            color: black;
+        }
+
+        #topBtn {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        #topBtn:hover {
+            background-color: #0056b3;
+        }
+  /*navbar*/
+nav {
+  width="100%";
+  background-color: #381B67;
+  color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  position: fixed;
+  width: 100%;
+}
+#logo-box,.logo {
+  color: greenyellow;
+  font-weight: 700;
+  font-size: 3.3rem;
+}
+a {
+  text-decoration: none;
+}
+   /*header*/
+header {
+  
+}
+</style>
+</head>
+
+<body background="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg4mbaEZQ9PT7aNVBIzPUwP833qqwhdtVU_jrf5_O6FSpOl5wDRg6gds3_56EvLpOntIC1AUoePtYh3N8s37D1TPI_Pdr1I7Y2YgpokYIMlQ-0lEh2oPlqzjUSwoWy11y3ZCUF2iHn_OPHO328Dn_5WHVkUS21TlfdVkgC2Ni3zsCSWq6W7DOHt4jj5kpg4/s180/1000040768.png">
+  <header>
+<nav>
+    <div class="logo-box">
+      <a href="/" class="logo">
+        Minecraft İndir
+      </a>
+    </div>
+</nav></header><br>
+</div>
+<div id="icerik1">
+<h1>Minecraft'ı indirmek için istediğiniz sürümü seçin veya arayın.</h1><br><hr><br>    <h2>Sürüm Arama</h2>
+    <input type="text" id="aramaKutusu" onkeyup="butonArama()" placeholder="Düğme içindeki metni yaz...">  <br><br><hr><br>  <button id="button" onclick="toggleIcerik()">Sürümleri Göster/Gizle</button>
+    <div id="icerik"><div id="butonlar"><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/25-02-2025/minecraft-1-21-62-music.apk" >
+<button type="button"><p>1.21.62</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/25-02-2025/minecraft-1-21-62-clone.apk" >
+<button type="button"><p>1.21.62 (clone / klon)</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/19-02-2025/minecraft-1-21-61-music.apk" >
+<button type="button"><p>1.21.61</p></button></a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/19-02-2025/minecraft-1-21-61-clone.apk" >
+<button type="button"><p>1.21.61 (clone / klon)</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/11-02-2025/minecraft-pe-1-21-60-music.apk" >
+<button type="button"><p>1.21.60</p></button>
+</a><br><br><hr><hr>
+<a href="https://mcpedl.org/uploads_files/11-02-2025/minecraft-1-21-60-clone.apk" >
+<button type="button"><p>1.21.60 (clone / klon)</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/11-12-2024/minecraft-1-21-51-music.apk">
+<button type="button"><p>1.21.51</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/03-12-2024/minecraft-1-21-50-music.apk">
+<button type="button"><p>1.21.50</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/02-11-2024/minecraft-1-21-44-music.apk">
+<button type="button"><p>1.21.44</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/28-10-2024/minecraft-1-21-43.apk">
+<button type="button"><p>1.21.43</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/23-10-2024/minecraft-1-21-41-music.apk">
+<button type="button"><p>1.21.41</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/22-10-2024/minecraft-1-21-40-music.apk">
+<button type="button"><p>1.21.40</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/30-09-2024/minecraft-1-21-31-music.apk">
+<button type="button"><p>1.21.31</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-09-2024/minecraft-1-21-30-music.apk">
+<button type="button"><p>1.21.30</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/04-09-2024/minecraft-1-21-23-music.apk">
+<button type="button"><p>1.21.23</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/28-08-2024/minecraft-1-21-22-music.apk">
+<button type="button"><p>1.21.22</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/16-08-2024/minecraft-1-21-21-music.apk">
+<button type="button"><p>1.21.21</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/14-08-2024/minecraft-1-21-20-music.apk">
+<button type="button"><p>1.21.20</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/13-06-2024/minecraft-1-21-0-music.apk">
+<button type="button"><p>1.21.0</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/29-04-2024/minecraft-1-20-81-xbox-servers.apk">
+<button type="button"><p>1.20.81</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/23-04-2024/minecraft-1-20-80-xbox-servers.apk">
+<button type="button"><p>1.20.80</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-04-2024/minecraft-1-20-73-xbox-servers.apk">
+<button type="button"><p>1.20.73</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/20-03-2024/minecraft-1-20-72-xbox-servers.apk">
+<button type="button"><p>1.20.72</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/12-03-2024/minecraft-1-20-71-xbox-servers.apk">
+<button type="button"><p>1.20.71</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/12-03-2024/minecraft-1-20-71-xbox-servers.apk">
+<button type="button"><p>1.20.70</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/23-02-2024/minecraft-1-20-62-xbox-servers.apk">
+<button type="button"><p>1.20.62</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/06-02-2024/minecraft-1-20-60-xbox-servers.apk">
+<button type="button"><p>1.20.60</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/14-12-2023/minecraft-1-20-51.apk">
+<button type="button"><p>1.20.51</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/05-12-2023/minecraft-1-20-50.apk">
+<button type="button"><p>1.20.50</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/28-06-2024/minecraft-1-20-41.apk">
+<button type="button"><p>1.20.41</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/24-10-2023/minecraft-1-20-40.apk">
+<button type="button"><p>1.20.40</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/21-10-2023/minecraft-1-20-32.apk">
+<button type="button"><p>1.20.32</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/26-09-2023/minecraft-1-20-31.apk">
+<button type="button"><p>1.20.31</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/19-09-2023/minecraft-1-20-30.apk">
+<button type="button"><p>1.20.30</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/16-08-2023/minecraft-1-20-15.apk">
+<button type="button"><p>1.20.15</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/18-07-2023/minecraft-1-20-12.apk">
+<button type="button"><p>1.20.12</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/11-07-2023/minecraft-1-20-10.apk">
+<button type="button"><p>1.20.10</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/21-06-2023/minecraft-1-20-1.apk">
+<button type="button"><p>1.20.1</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/07-06-2023/minecraft-1-20-0.apk">
+<button type="button"><p>1.20.0</p></button>
+</a>
+<br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-05-2023/minecraft-1-19-83.apk">
+<button type="button"><p>1.19.83</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/27-04-2023/minecraft-1-19-81.apk">
+<button type="button"><p>1.19.81</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/26-04-2023/minecraft-1-19-80.apk">
+<button type="button"><p>1.19.80</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/29-03-2023/minecraft-1-19-73-02.apk">
+<button type="button"><p>1.19.73</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-05-2023/minecraft-1-19-72.apk">
+<button type="button"><p>1.19.72</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-03-2023/minecraft-1-19-71.apk">
+<button type="button"><p>1.19.71</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/14-03-2023/minecraft-1-19-70.apk">
+<button type="button"><p>1.19.70</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/24-02-2023/minecraft-1-19-63.apk">
+<button type="button"><p>1.19.63</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/18-02-2023/minecraft-1-19-62.apk">
+<button type="button"><p>1.19.62</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/07-02-2023/minecraft-1-19-60.apk">
+<button type="button"><p>1.19.60</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/14-05-2024/minecraft-1-19-51.apk">
+<button type="button"><p>1.19.51</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/29-11-2022/minecraft-1-19-50.apk">
+<button type="button"><p>1.19.50</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/03-11-2022/minecraft-1-19-41.apk">
+<button type="button"><p>1.19.41</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/25-10-2022/minecraft-1-19-40.apk">
+<button type="button"><p>1.19.40</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/04-10-2022/minecraft-1-19-31.apk">
+<button type="button"><p>1.19.31</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/20-09-2022/minecraft-1-19-30.apk">
+<button type="button"><p>1.19.30</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/01-09-2022/minecraft-1-19-22.apk">
+<button type="button"><p>1.19.22</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/04-11-2022/minecraft-1-19-21.apk">
+<button type="button"><p>1.19.21</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/22-11-2022/minecraft-1-19-20.apk">
+<button type="button"><p>1.19.20</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/26-07-2022/minecraft-1-19-11.apk">
+<button type="button"><p>1.19.11</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/16-07-2022/minecraft-1-19-10.apk">
+<button type="button"><p>1.19.10</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/24-10-2024/minecraft-1-19-0.apk">
+<button type="button"><p>1.19.0</p></button>
+</a>
+<a href="https://mcpedl.org/uploads_files/22-07-2022/minecraft-1-18-32.apk">
+<button type="button"><p>1.18.32</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/27-06-2022/minecraft-1-18-31.apk">
+<button type="button"><p>1.18.31</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/07-06-2022/minecraft-1-18-30.apk">
+<button type="button"><p>1.18.30</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/17-04-2022/minecraft-1-18-12.apk">
+<button type="button"><p>1.18.12</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/08-02-2022/minecraft-1-18-10.apk">
+<button type="button"><p>1.18.10</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/07-06-2022/minecraft-1-18-2.apk">
+<button type="button"><p>1.18.2</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/18-07-2023/minecraft-1-18-1.apk">
+<button type="button"><p>1.18.1</p></button>
+</a><br><br><hr><br>
+<a href="https://mcpedl.org/uploads_files/07-06-2022/minecraft-1-18-0.apk">
+<button type="button"><p>1.18.0</p></button>
+</a><br><br><hr><br>
+</div>
+</div><br><br><br>
+<footer class="footer">
+  <p>iletişim: muhammed251210@gmail.com</p><p> © 2025 Tüm Hakları Saklıdır.</p>
+</footer>
+    <script>
+        function toggleIcerik() {
+            var icerik = document.getElementById("icerik");
+            if (icerik.style.display === "none") {
+                icerik.style.display = "block";
+            } else {
+                icerik.style.display = "none";
+            }
+        }
+    </script>
+<script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (window.scrollY > 0) { //
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+</script>
+    <script>
+        function butonArama() {
+            var input = document.getElementById("aramaKutusu").value.toLowerCase();
+            var butonlar = document.querySelectorAll("#butonlar button");
+
+            butonlar.forEach(function(buton) {
+                var metin = buton.textContent.toLowerCase();
+
+                // Önce eski vurgulamaları temizle
+                buton.innerHTML = buton.textContent;
+
+                if (metin.includes(input) && input.trim() !== "") {
+                    buton.classList.remove("hidden"); // Butonu göster
+                    var regex = new RegExp(input, "gi");
+                    buton.innerHTML = buton.textContent.replace(regex, function(matched) {
+                        return '<span class="highlight">' + matched + '</span>';
+                    });
+                } else if (input.trim() === "") {
+                    buton.classList.remove("hidden"); // Hepsini göster
+                } else {
+                    buton.classList.add("hidden"); // Eşleşmeyeni gizle
+                }
+            });
+        }
+    </script>
+        <button id="topBtn" onclick="scrollToTop()">↑ En Üste Çık</button>
+        <script>
+        let topButton = document.getElementById("topBtn");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                topButton.style.display = "block";
+            } else {
+                topButton.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+    </script>
+</body>
+
+</html>

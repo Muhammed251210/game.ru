@@ -9,174 +9,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
-    /* --- CSS Kodları --- */
-    :root {
-        --header-height: 90px; /* Header'ın başlangıç yüksekliği */
-        --header-shrink-height: 60px; /* Header'ın küçülmüş yüksekliği */
-    }
+        /* --- CSS Kodları (Öncekiyle Aynı) --- */
+        :root {
+            --header-height: 90px; /* Header'ın başlangıç yüksekliği */
+            --header-shrink-height: 60px; /* Header'ın küçülmüş yüksekliği */
+        }
 
-    html {
-        scroll-behavior: smooth;
-    }
+        html { scroll-behavior: smooth; }
 
-    body {
-        font-family: 'Minecraftia', 'Press Start 2P', sans-serif;
-        background-color: #2b2b2b;
-        /* background-image: url('images/minecraft-background.png'); */
-        background-size: cover;
-        background-attachment: fixed;
-        color: #FFF;
-        margin: 0;
-        padding: 0;
-        padding-top: var(--header-height); /* Başlangıçtaki header yüksekliği kadar boşluk */
-        line-height: 1.6;
-    }
+        body {
+            font-family: 'Minecraftia', 'Press Start 2P', sans-serif; background-color: #2b2b2b;
+            background-size: cover; background-attachment: fixed; color: #FFF; margin: 0; padding: 0;
+            padding-top: var(--header-height); line-height: 1.6;
+        }
 
-    /* Header (Navigasyon Barı) Stilleri */
-    #main-header {
-        background-color: #000000; /* Siyah arkaplan */
-        padding: 15px 30px; /* Başlangıç padding */
-        text-align: center;
-        border-bottom: 4px solid #333;
-        position: fixed; /* Sabitlendi */
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        box-sizing: border-box;
-        height: var(--header-height); /* Başlangıç yüksekliği */
-        display: flex;
-        align-items: center; /* Dikey ortalama */
-        justify-content: center; /* Yatay ortalama */
-        transition: height 0.3s ease, padding 0.3s ease; /* Küçülme animasyonu */
-        overflow: hidden;
-    }
+        #main-header { background-color: #000000; padding: 15px 30px; text-align: center; border-bottom: 4px solid #333; position: fixed; top: 0; left: 0; right: 0; z-index: 1000; box-sizing: border-box; height: var(--header-height); display: flex; align-items: center; justify-content: center; transition: height 0.3s ease, padding 0.3s ease; overflow: hidden; }
+        #main-header h1 { margin: 0; font-size: 2.0em; text-shadow: 2px 2px #222; white-space: nowrap; transition: font-size 0.3s ease; }
+        .mc-e { color: #FFFF55; } .mc-a { color: #55FF55; }
+        body.scrolled #main-header { height: var(--header-shrink-height); padding: 8px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        body.scrolled #main-header h1 { font-size: 1.5em; }
 
-    #main-header h1 {
-        margin: 0;
-        font-size: 2.0em; /* Başlangıç font boyutu */
-        text-shadow: 2px 2px #222;
-        white-space: nowrap;
-        transition: font-size 0.3s ease;
-    }
+        .rank-container { display: flex; flex-wrap: wrap; justify-content: center; padding: 40px 20px; gap: 25px; }
+        .rank-card { background-color: rgba(45, 45, 45, 0.9); border: 3px solid #666; border-radius: 8px; padding: 20px; width: 280px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
+        .rank-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8); }
+        .rank-title { margin-top: 0; margin-bottom: 15px; font-size: 1.8em; text-shadow: 1px 1px #111; border-bottom: 2px solid #555; padding-bottom: 10px; }
+        .rank-fly .rank-title { color: #55FFFF; } .rank-vip .rank-title { color: #55FF55; } .rank-premium .rank-title { color: #FFAA00; } .rank-creative .rank-title { color: #FF55FF; } .rank-mod .rank-title { color: #00AAAA; } .rank-admin .rank-title { color: #FF5555; } .rank-operator .rank-title { color: #AA0000; } .rank-creator .rank-title { color: #FFFF55; } .rank-owner .rank-title { color: #AA00AA; font-weight: bold; } .rank-potentate .rank-title { color: #5555FF; font-weight: bold; } .rank-sponsor .rank-title { color: #00AA00; font-weight: bold; } .rank-op .rank-title { color: #AA0000; font-weight: bold; } .rank-king .rank-title { color: #FFAA00; font-weight: bold; }
+        .features { list-style: none; padding: 0; margin: 0 0 20px 0; text-align: left; color: #DDD; font-size: 0.9em; flex-grow: 1; }
+        .features li { margin-bottom: 8px; padding-left: 15px; position: relative; }
+        .features li::before { content: '✓'; color: #55FF55; position: absolute; left: 0; top: 1px; }
 
-    .mc-e { color: #FFFF55; }
-    .mc-a { color: #55FF55; }
+        /* Fiyat Linki (Yeşil Buton Gibi) */
+        .price-link { display: inline-block; background-color: #55FF55; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-bottom: 20px; transition: background-color 0.3s ease, transform 0.2s ease; border: 2px solid #36a336; box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; }
+        .price { font-size: 1.4em; font-weight: bold; color: #111; margin: 0; padding: 0; transition: color 0.3s ease; }
+        .price-link:hover { background-color: #88FF88; transform: scale(1.05); }
+        .price-link:hover .price { color: #000; }
 
-    /* Header Küçüldüğünde Uygulanacak Stiller */
-    body.scrolled #main-header {
-        height: var(--header-shrink-height); /* Küçülmüş yükseklik */
-        padding: 8px 30px; /* Küçülmüş padding */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Küçülünce hafif gölge */
-    }
+        /* İletişim/Ödeme Bölümü Stili */
+        #contact-for-payment { background-color: rgba(10, 10, 10, 0.85); padding: 35px; margin: 50px auto; max-width: 800px; border-radius: 8px; border: 3px solid #555; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        #contact-for-payment h2 { margin-top: 0; margin-bottom: 25px; color: #55FF55; font-size: 1.8em; }
+        #contact-for-payment p { margin-bottom: 15px; font-size: 1.1em; color: #eee; line-height: 1.7; }
+        #contact-for-payment .iban-line { font-weight: bold; color: #FFFF55; font-size: 1.2em; user-select: all; word-break: break-all; background-color: rgba(255, 255, 255, 0.1); padding: 5px; border-radius: 3px; display: inline-block; }
+        #contact-for-payment .account-name { font-weight: bold; color: #ddd; }
+        #contact-for-payment strong { color: #FF5555; }
 
-    body.scrolled #main-header h1 {
-        font-size: 1.5em; /* Küçülmüş font boyutu */
-    }
+        /* Form Stilleri */
+        #order-form { margin-top: 30px; padding-top: 30px; border-top: 1px solid #444; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;}
+        #order-form label { display: block; margin-bottom: 5px; font-weight: bold; color: #ccc; font-size: 1em; }
+        #order-form input[type="text"],
+        #order-form input[type="email"] { width: 100%; padding: 10px; margin-bottom: 15px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #555; border-radius: 4px; color: #fff; font-family: sans-serif; font-size: 1em; box-sizing: border-box; }
+        #order-form input:focus { outline: none; border-color: #55FF55; background-color: rgba(255, 255, 255, 0.15); }
+        #order-form button { display: block; width: 100%; background-color: #FFAA00; color: #111; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: background-color 0.3s ease, transform 0.2s ease; border: 2px solid #bd7d00; box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; font-family: 'Press Start 2P', sans-serif; margin-top: 20px; }
+        #order-form button:hover { background-color: #FFC14D; transform: scale(1.02); }
+        #rank-selection-info { margin-bottom: 20px; font-size: 1.2em; color: #55FFFF; font-weight: bold; text-align: center;}
+        #rankDisplay { font-style: italic; }
 
-    /* Rütbe Kartları Konteyneri */
-    .rank-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 40px 20px;
-        gap: 25px;
-    }
+        /* Footer Stili */
+        footer { text-align: center; margin-top: 40px; padding: 20px; background-color: #000000; color: #888; font-size: 0.9em; border-top: 3px solid #333; }
+        footer span { color: #ccc; }
 
-    /* Tek Rütbe Kartı Stili */
-    .rank-card { background-color: rgba(45, 45, 45, 0.9); border: 3px solid #666; border-radius: 8px; padding: 20px; width: 280px; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; }
-    .rank-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8); }
-    .rank-title { margin-top: 0; margin-bottom: 15px; font-size: 1.8em; text-shadow: 1px 1px #111; border-bottom: 2px solid #555; padding-bottom: 10px; }
-    /* Rank Renkleri */
-    .rank-fly .rank-title { color: #55FFFF; } .rank-vip .rank-title { color: #55FF55; } .rank-premium .rank-title { color: #FFAA00; } .rank-creative .rank-title { color: #FF55FF; } .rank-mod .rank-title { color: #00AAAA; } .rank-admin .rank-title { color: #FF5555; } .rank-operator .rank-title { color: #AA0000; } .rank-creator .rank-title { color: #FFFF55; } .rank-owner .rank-title { color: #AA00AA; font-weight: bold; } .rank-potentate .rank-title { color: #5555FF; font-weight: bold; } .rank-sponsor .rank-title { color: #00AA00; font-weight: bold; } .rank-op .rank-title { color: #AA0000; font-weight: bold; } .rank-king .rank-title { color: #FFAA00; font-weight: bold; }
+        /* Üste Çık Butonu Stili */
+        #scrollTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #55FF55; color: black; cursor: pointer; padding: 10px 15px; border-radius: 50%; font-size: 18px; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.4); transition: background-color 0.3s ease, opacity 0.3s ease; }
+        #scrollTopBtn:hover { background-color: #88FF88; }
 
-    /* Özellik Listesi */
-    .features { list-style: none; padding: 0; margin: 0 0 20px 0; text-align: left; color: #DDD; font-size: 0.9em; flex-grow: 1; }
-    .features li { margin-bottom: 8px; padding-left: 15px; position: relative; }
-    .features li::before { content: '✓'; color: #55FF55; position: absolute; left: 0; top: 1px; }
+        /* Renk Kodları Yardımcı Sınıfları */
+        .mc-0{color:#000000}.mc-1{color:#0000AA}.mc-2{color:#00AA00}.mc-3{color:#00AAAA}.mc-4{color:#AA0000}.mc-5{color:#AA00AA}.mc-6{color:#FFAA00}.mc-7{color:#AAAAAA}.mc-8{color:#555555}.mc-9{color:#5555FF}.mc-a{color:#55FF55}.mc-b{color:#55FFFF}.mc-c{color:#FF5555}.mc-d{color:#FF55FF}.mc-e{color:#FFFF55}.mc-f{color:#FFFFFF}
+        .mc-l{font-weight:bold}.mc-o{font-style:italic}.mc-n{text-decoration:underline}.mc-m{text-decoration:line-through}
 
-    /* Fiyat Linki (Artık Yeşil Buton Gibi) */
-    .price-link {
-        display: inline-block; /* Buton gibi davranması için */
-        background-color: #55FF55; /* Yeşil arkaplan */
-        padding: 10px 20px; /* Buton iç boşluğu */
-        border-radius: 5px; /* Köşe yuvarlaklığı */
-        text-decoration: none; /* Link alt çizgisini kaldır */
-        margin-bottom: 20px; /* Alt boşluk */
-        transition: background-color 0.3s ease, transform 0.2s ease; /* Geçiş efekti */
-        border: 2px solid #36a336; /* Yeşil çerçeve */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.3); /* Hafif gölge */
-        cursor: pointer; /* Tıklanabilir olduğunu göster */
-    }
-    .price {
-        /* Fiyat Metni */
-        font-size: 1.4em;
-        font-weight: bold;
-        color: #111; /* Yeşil buton üzerinde koyu renk yazı */
-        margin: 0; /* Ekstra margin yok */
-        padding: 0; /* Padding linkte */
-        transition: color 0.3s ease; /* Hover için yazı rengi geçişi */
-    }
-    .price-link:hover {
-         background-color: #88FF88; /* Üzerine gelince daha açık yeşil */
-         transform: scale(1.05); /* Hafif büyüme */
-    }
-    /* Üzerine gelince içindeki yazının rengi de değişebilir */
-    .price-link:hover .price {
-        color: #000; /* Üzerine gelince yazı siyah olsun */
-    }
-
-    /* Eski Satın Alma Butonu stilleri kaldırıldı */
-
-    /* İletişim/Ödeme Bölümü Stili */
-    #contact-for-payment {
-        background-color: rgba(10, 10, 10, 0.85);
-        padding: 35px;
-        margin: 50px auto;
-        max-width: 800px;
-        border-radius: 8px;
-        border: 3px solid #555;
-        text-align: center;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    #contact-for-payment h2 {
-        margin-top: 0;
-        margin-bottom: 20px;
-        color: #55FF55; /* Yeşil başlık */
-        font-size: 1.6em;
-    }
-     #contact-for-payment p {
-        margin-bottom: 15px;
-        font-size: 1.1em;
-        color: #eee;
-     }
-    #contact-for-payment a {
-        color: #55FFFF; /* Eposta linki rengi */
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.2em;
-    }
-    #contact-for-payment a:hover {
-        text-decoration: underline;
-    }
-
-    /* Footer Stili */
-    footer { text-align: center; margin-top: 40px; padding: 20px; background-color: #000000; color: #888; font-size: 0.9em; border-top: 3px solid #333; }
-    footer span { color: #ccc; }
-
-    /* Üste Çık Butonu Stili */
-    #scrollTopBtn { display: none; position: fixed; bottom: 20px; right: 30px; z-index: 99; border: none; outline: none; background-color: #55FF55; color: black; cursor: pointer; padding: 10px 15px; border-radius: 50%; font-size: 18px; font-family: sans-serif; box-shadow: 0 2px 5px rgba(0,0,0,0.4); transition: background-color 0.3s ease, opacity 0.3s ease; }
-    #scrollTopBtn:hover { background-color: #88FF88; }
-
-    /* Renk Kodları İçin Yardımcı Sınıflar */
-    .mc-0{color:#000000}.mc-1{color:#0000AA}.mc-2{color:#00AA00}.mc-3{color:#00AAAA}.mc-4{color:#AA0000}.mc-5{color:#AA00AA}.mc-6{color:#FFAA00}.mc-7{color:#AAAAAA}.mc-8{color:#555555}.mc-9{color:#5555FF}.mc-a{color:#55FF55}.mc-b{color:#55FFFF}.mc-c{color:#FF5555}.mc-d{color:#FF55FF}.mc-e{color:#FFFF55}.mc-f{color:#FFFFFF}
-    .mc-l{font-weight:bold}.mc-o{font-style:italic}.mc-n{text-decoration:underline}.mc-m{text-decoration:line-through}
-
-    /* Mobil Duyarlılık */
-    @media (max-width: 900px) { #main-header { flex-direction: column; height: auto !important; padding-bottom: 10px; } #main-nav { width: 100%; margin-top: 8px; } #main-nav ul { gap: 2px 5px; } #main-nav ul li a { font-size: 0.65em; } body { padding-top: 100px; } }
-    @media (max-width: 768px) { #main-header h1 { font-size: 1.5em; } .rank-card { width: 90%; } }
-    @media (max-width: 480px) { #main-header h1 { font-size: 1.3em; } #main-header { padding: 8px 15px;} body { padding-top: calc(var(--header-shrink-height) + 10px) ; } }
-
+        /* Mobil Duyarlılık */
+        @media (max-width: 900px) { #main-header { flex-direction: column; height: auto !important; padding-bottom: 10px; } body { padding-top: 100px; } }
+        @media (max-width: 768px) { #main-header h1 { font-size: 1.5em; } .rank-card { width: 90%; } }
+        @media (max-width: 480px) { #main-header h1 { font-size: 1.3em; } #main-header { padding: 8px 15px;} body { padding-top: calc(var(--header-shrink-height) + 10px) ; } }
 
     </style>
 </head>
@@ -188,217 +90,115 @@
     </header>
 
     <main class="rank-container">
-
-        <div class="rank-card rank-fly">
-            <h2 class="rank-title">[Fly]</h2>
-            <ul class="features">
-                <li><span class="mc-b">/fly</span> <span class="mc-7">command to soar freely!</span></li>
-                <li><span class="mc-f">Cool look in chat.</span></li>
-            </ul>
-            <a href="#contact-for-payment" class="price-link">
-                <p class="price">0.16 USD</p>
-            </a>
-            </div>
-
-        <div class="rank-card rank-vip">
-            <h2 class="rank-title">[VIP]</h2>
-            <ul class="features">
-                <li><span class="mc-a">/fly</span> <span class="mc-7">command</span></li>
-                <li><span class="mc-a">/kit vip</span> <span class="mc-7">(Special items!)</span></li>
-                <li><span class="mc-a">/feed, /heal, /back</span></li>
-                <li><span class="mc-a">/clearinventory</span></li>
-                <li><span class="mc-f">Special VIP prefix.</span></li>
-            </ul>
-            <a href="#contact-for-payment" class="price-link">
-                <p class="price">0.31 USD</p>
-            </a>
-        </div>
-
-        <div class="rank-card rank-premium">
-            <h2 class="rank-title">[Premium]</h2>
-            <ul class="features">
-                <li><span class="mc-6">All VIP perks</span></li>
-                <li><span class="mc-6">/god</span> <span class="mc-7">(Immortality)</span></li>
-                <li><span class="mc-6">/repair</span> <span class="mc-7">(Repair items)</span></li>
-                <li><span class="mc-6">/kit premium</span></li>
-                <li><span class="mc-f">Cooler prefix!</span></li>
-            </ul>
-            <a href="#contact-for-payment" class="price-link">
-                 <p class="price">1.23 USD</p>
-            </a>
-        </div>
-
-        <div class="rank-card rank-creative">
-            <h2 class="rank-title">[Creative]</h2>
-             <ul class="features">
-                <li><span class="mc-d">All Premium perks</span></li>
-                <li><span class="mc-d">/gamemode creative</span> <span class="mc-7">access</span></li>
-                <li><span class="mc-f">Unlimited blocks & resources!</span></li>
-            </ul>
-            <a href="#contact-for-payment" class="price-link">
-                 <p class="price">1.85 USD</p>
-            </a>
-        </div>
-
-        <div class="rank-card rank-mod">
-             <h2 class="rank-title">[Mod]</h2>
-             <ul class="features">
-                <li><span class="mc-3">All Creative perks</span></li>
-                <li><span class="mc-3">/kick, /mute, /unmute</span></li>
-                <li><span class="mc-3">/kill commands</span></li>
-                <li><span class="mc-f">Help players!</span></li>
-             </ul>
-            <a href="#contact-for-payment" class="price-link">
-                <p class="price">3.09 USD</p>
-            </a>
-        </div>
-
-         <div class="rank-card rank-admin">
-            <h2 class="rank-title">[Admin]</h2>
-             <ul class="features">
-                <li><span class="mc-c">All Moderator perks</span></li>
-                <li><span class="mc-c">/ban, /unban</span> <span class="mc-7">permissions</span></li>
-                <li><span class="mc-c">/tp</span> <span class="mc-7">(Teleport)</span></li>
-                <li><span class="mc-c">/time</span> <span class="mc-7">(Change time)</span></li>
-             </ul>
-            <a href="#contact-for-payment" class="price-link">
-                 <p class="price">5.57 USD</p>
-            </a>
-        </div>
-
-         <div class="rank-card rank-operator">
-            <h2 class="rank-title">[Operator]</h2>
-             <ul class="features">
-                <li><span class="mc-4">All Admin perks</span></li>
-                <li><span class="mc-4">/speed</span> <span class="mc-7">(Adjust speed)</span></li>
-                <li><span class="mc-4">/nick</span> <span class="mc-7">(Change nickname)</span></li>
-                <li><span class="mc-f">Warp management</span></li>
-             </ul>
-            <a href="#contact-for-payment" class="price-link">
-                <p class="price">10.53 USD</p>
-            </a>
-        </div>
-
-         <div class="rank-card rank-creator">
-            <h2 class="rank-title">[Creator]</h2>
-             <ul class="features">
-                 <li><span class="mc-e">All Operator perks</span></li>
-                 <li><span class="mc-e">WorldEdit Commands</span></li>
-                 <li><span class="mc-e">/give</span> <span class="mc-7">(Give items)</span></li>
-                 <li><span class="mc-e">/vanish</span> <span class="mc-7">(Invisibility)</span></li>
-                 <li><span class="mc-e">/setrank fly</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">18.59 USD</p>
-             </a>
-        </div>
-
-        <div class="rank-card rank-owner">
-            <h2 class="rank-title">[Owner]</h2>
-             <ul class="features">
-                 <li><span class="mc-5 mc-l">All Creator perks</span></li>
-                 <li><span class="mc-5 mc-l">/say</span> <span class="mc-7">(Broadcast)</span></li>
-                 <li><span class="mc-5 mc-l">/invsee, /enderchest</span></li>
-                 <li><span class="mc-5 mc-l">/whois</span> <span class="mc-7">(Player info)</span></li>
-                 <li><span class="mc-5 mc-l">/setrank vip</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">32.24 USD</p>
-             </a>
-        </div>
-
-        <div class="rank-card rank-potentate">
-            <h2 class="rank-title">[Potentate]</h2>
-             <ul class="features">
-                 <li><span class="mc-9 mc-l">All Owner perks</span></li>
-                 <li><span class="mc-9 mc-l">/sudo</span> <span class="mc-7">command</span></li>
-                 <li><span class="mc-9 mc-l">/setrank premium</span></li>
-                 <li><span class="mc-f">Support the server!</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">62.01 USD</p>
-             </a>
-        </div>
-
-        <div class="rank-card rank-sponsor">
-            <h2 class="rank-title">[Sponsor]</h2>
-             <ul class="features">
-                 <li><span class="mc-2 mc-l">All Potentate perks</span></li>
-                 <li><span class="mc-2 mc-l">/setrank creative</span></li>
-                 <li><span class="mc-f">Special Sponsor role!</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">86.82 USD</p>
-             </a>
-        </div>
-
-        <div class="rank-card rank-op">
-            <h2 class="rank-title">[OP]</h2>
-             <ul class="features">
-                 <li><span class="mc-4 mc-l">All Sponsor perks</span></li>
-                 <li><span class="mc-4 mc-l">/setrank moderator</span></li>
-                 <li><span class="mc-f">OP Power!</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">124.03 USD</p>
-             </a>
-        </div>
-
-        <div class="rank-card rank-king">
-            <h2 class="rank-title">[KING]</h2>
-             <ul class="features">
-                 <li><span class="mc-6 mc-l">All OP perks</span></li>
-                 <li><span class="mc-6 mc-l">/setrank admin</span></li>
-                 <li><span class="mc-6 mc-l">/effect</span> <span class="mc-7">command</span></li>
-                 <li><span class="mc-f">Fit for a King!</span></li>
-             </ul>
-             <a href="#contact-for-payment" class="price-link">
-                 <p class="price">186.05 USD</p>
-             </a>
-        </div>
-
+        <div class="rank-card rank-fly"> <h2 class="rank-title">[Fly]</h2> <ul class="features"> <li><span class="mc-b">/fly</span> <span class="mc-7">command to soar freely!</span></li> <li><span class="mc-f">Cool look in chat.</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Fly" data-price="0.16 USD"><p class="price">0.16 USD</p></a> </div>
+        <div class="rank-card rank-vip"> <h2 class="rank-title">[VIP]</h2> <ul class="features"> <li><span class="mc-a">/fly</span> <span class="mc-7">command</span></li> <li><span class="mc-a">/kit vip</span> <span class="mc-7">(Special items!)</span></li> <li><span class="mc-a">/feed, /heal, /back</span></li> <li><span class="mc-a">/clearinventory</span></li> <li><span class="mc-f">Special VIP prefix.</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="VIP" data-price="0.31 USD"><p class="price">0.31 USD</p></a> </div>
+        <div class="rank-card rank-premium"> <h2 class="rank-title">[Premium]</h2> <ul class="features"> <li><span class="mc-6">All VIP perks</span></li> <li><span class="mc-6">/god</span> <span class="mc-7">(Immortality)</span></li> <li><span class="mc-6">/repair</span> <span class="mc-7">(Repair items)</span></li> <li><span class="mc-6">/kit premium</span></li> <li><span class="mc-f">Cooler prefix!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Premium" data-price="1.23 USD"><p class="price">1.23 USD</p></a> </div>
+        <div class="rank-card rank-creative"> <h2 class="rank-title">[Creative]</h2> <ul class="features"> <li><span class="mc-d">All Premium perks</span></li> <li><span class="mc-d">/gamemode creative</span> <span class="mc-7">access</span></li> <li><span class="mc-f">Unlimited blocks & resources!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Creative" data-price="1.85 USD"><p class="price">1.85 USD</p></a> </div>
+        <div class="rank-card rank-mod"> <h2 class="rank-title">[Mod]</h2> <ul class="features"> <li><span class="mc-3">All Creative perks</span></li> <li><span class="mc-3">/kick, /mute, /unmute</span></li> <li><span class="mc-3">/kill commands</span></li> <li><span class="mc-f">Help players!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Moderator" data-price="3.09 USD"><p class="price">3.09 USD</p></a> </div>
+        <div class="rank-card rank-admin"> <h2 class="rank-title">[Admin]</h2> <ul class="features"> <li><span class="mc-c">All Moderator perks</span></li> <li><span class="mc-c">/ban, /unban</span> <span class="mc-7">permissions</span></li> <li><span class="mc-c">/tp</span> <span class="mc-7">(Teleport)</span></li> <li><span class="mc-c">/time</span> <span class="mc-7">(Change time)</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Admin" data-price="5.57 USD"><p class="price">5.57 USD</p></a> </div>
+        <div class="rank-card rank-operator"> <h2 class="rank-title">[Operator]</h2> <ul class="features"> <li><span class="mc-4">All Admin perks</span></li> <li><span class="mc-4">/speed</span> <span class="mc-7">(Adjust speed)</span></li> <li><span class="mc-4">/nick</span> <span class="mc-7">(Change nickname)</span></li> <li><span class="mc-f">Warp management</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Operator" data-price="10.53 USD"><p class="price">10.53 USD</p></a> </div>
+        <div class="rank-card rank-creator"> <h2 class="rank-title">[Creator]</h2> <ul class="features"> <li><span class="mc-e">All Operator perks</span></li> <li><span class="mc-e">WorldEdit Commands</span></li> <li><span class="mc-e">/give</span> <span class="mc-7">(Give items)</span></li> <li><span class="mc-e">/vanish</span> <span class="mc-7">(Invisibility)</span></li> <li><span class="mc-e">/setrank fly</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Creator" data-price="18.59 USD"><p class="price">18.59 USD</p></a> </div>
+        <div class="rank-card rank-owner"> <h2 class="rank-title">[Owner]</h2> <ul class="features"> <li><span class="mc-5 mc-l">All Creator perks</span></li> <li><span class="mc-5 mc-l">/say</span> <span class="mc-7">(Broadcast)</span></li> <li><span class="mc-5 mc-l">/invsee, /enderchest</span></li> <li><span class="mc-5 mc-l">/whois</span> <span class="mc-7">(Player info)</span></li> <li><span class="mc-5 mc-l">/setrank vip</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Owner" data-price="32.24 USD"><p class="price">32.24 USD</p></a> </div>
+        <div class="rank-card rank-potentate"> <h2 class="rank-title">[Potentate]</h2> <ul class="features"> <li><span class="mc-9 mc-l">All Owner perks</span></li> <li><span class="mc-9 mc-l">/sudo</span> <span class="mc-7">command</span></li> <li><span class="mc-9 mc-l">/setrank premium</span></li> <li><span class="mc-f">Support the server!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Potentate" data-price="62.01 USD"><p class="price">62.01 USD</p></a> </div>
+        <div class="rank-card rank-sponsor"> <h2 class="rank-title">[Sponsor]</h2> <ul class="features"> <li><span class="mc-2 mc-l">All Potentate perks</span></li> <li><span class="mc-2 mc-l">/setrank creative</span></li> <li><span class="mc-f">Special Sponsor role!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Sponsor" data-price="86.82 USD"><p class="price">86.82 USD</p></a> </div>
+        <div class="rank-card rank-op"> <h2 class="rank-title">[OP]</h2> <ul class="features"> <li><span class="mc-4 mc-l">All Sponsor perks</span></li> <li><span class="mc-4 mc-l">/setrank moderator</span></li> <li><span class="mc-f">OP Power!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="OP" data-price="124.03 USD"><p class="price">124.03 USD</p></a> </div>
+        <div class="rank-card rank-king"> <h2 class="rank-title">[KING]</h2> <ul class="features"> <li><span class="mc-6 mc-l">All OP perks</span></li> <li><span class="mc-6 mc-l">/setrank admin</span></li> <li><span class="mc-6 mc-l">/effect</span> <span class="mc-7">command</span></li> <li><span class="mc-f">Fit for a King!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="KING" data-price="186.05 USD"><p class="price">186.05 USD</p></a> </div>
         </main>
 
     <section id="contact-for-payment">
-        <h2>Contact for Purchase</h2>
-        <p>To purchase a rank, please contact us via email with your Minecraft username and the desired rank:</p>
-        <p><a href="mailto:example@gmail.com">www.gameru.com@gmail.com</a></p>
-        <p><span class="mc-7">(Payment details will be provided via email.)</span></p>
+        <h2>Order Information & Payment Instructions</h2>
+
+        <div id="rank-selection-info">
+            Selected Rank: <span id="rankDisplay" style="font-style: italic;">Please click on a rank price above</span>
+        </div>
+
+        <hr style="border-color: #444; margin: 20px 0;">
+
+        <p style="color: #ccc; font-size: 1em;">Please fill in your details below and click the button to submit your information.</p>
+        <form id="order-form" action="https://formsubmit.co/muhammed251210@gmail.com" method="POST"> <input type="hidden" name="_next" value="https://YOUR-WEBSITE.com/thank-you.html"> <input type="hidden" name="_subject" value="Yeni Game.Ru Rank Siparişi!">
+
+            <input type="hidden" name="_captcha" value="false">
+
+             <label for="mcUsername">Minecraft Username (Required):</label>
+             <input type="text" id="mcUsername" name="username" required placeholder="Enter your exact Minecraft name">
+
+             <label for="selectedRankDisplay">Selected Rank (Auto-filled):</label>
+             <input type="text" id="selectedRankDisplay" name="Selected Rank (with price)" readonly style="background-color:#333; border-color:#444; cursor: default;">
+             <input type="hidden" id="selectedRankValue" name="Rank">
+
+             <label for="realName">Name Surname (Optional):</label>
+             <input type="text" id="realName" name="Name Surname" placeholder="Optional">
+
+             <label for="userEmail">Your Email (Optional, for easier contact):</label>
+             <input type="email" id="userEmail" name="Player Email" placeholder="Optional">
+
+             <button type="submit" id="sendInfoButton">Submit Information</button> </form>
+
+        <hr style="border-color: #444; margin: 30px 0;">
+
+        <h3>Payment via IBAN Transfer</h3>
+        <p>After submitting your information using the form above, please transfer the USD equivalent amount for your selected rank to the IBAN below.</p>
+        <p><strong>VERY IMPORTANT:</strong> Please write your exact Minecraft Username in the bank transfer description (Açıklama) section!</p>
+        <p>IBAN: <span class="iban-line">TR10 0006 2000 9100 0006 9697 09</span></p>
+        <p>Account Name: <span class="account-name">[Hesap Sahibinin Tam Adı Soyadı Buraya Yazılacak]</span></p>
+        <p><span class="mc-7">(We will grant the rank after confirming both your information submission and the bank transfer.)</span></p>
+
     </section>
 
     <footer>
-        <p>Contact: <span>www.gameru.com@gmail.com</span> | &copy; 2025 Game.Ru Server - All rights reserved.</p>
+        <p>Contact: <span>admin@gameru.org</span> | &copy; 2025 Game.Ru Server - All rights reserved.</p>
     </footer>
 
     <script>
-        // --- JavaScript Kodları (Header küçültme ve üste çık butonu) ---
+        // --- JavaScript Kodları ---
         const header = document.getElementById("main-header");
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         const shrinkThreshold = 50;
         const topBtnThreshold = 100;
 
+        // Scroll fonksiyonları (Header küçültme ve Üste Çık butonu)
         window.onscroll = function() {scrollFunction()};
-
         function scrollFunction() {
-          // Header Küçültme/Büyütme
           if (document.body.scrollTop > shrinkThreshold || document.documentElement.scrollTop > shrinkThreshold) {
             document.body.classList.add("scrolled");
           } else {
             document.body.classList.remove("scrolled");
           }
-
-          // Üste Çık Butonunu Göster/Gizle
           if (document.body.scrollTop > topBtnThreshold || document.documentElement.scrollTop > topBtnThreshold) {
             scrollTopBtn.style.display = "block";
           } else {
             scrollTopBtn.style.display = "none";
           }
         }
-
-        // Üste Çık Butonuna Tıklama Olayı
+        // Üste Çık Butonu Tıklama
         scrollTopBtn.addEventListener("click", function() {
-          window.scrollTo({top: 0, behavior: 'smooth'}); // Yumuşak kaydırma ile en üste git
+          window.scrollTo({top: 0, behavior: 'smooth'});
         });
+
+        // Fiyat Linklerine Tıklama Olayı -> Formu Güncelleme
+        const priceLinks = document.querySelectorAll('.price-link');
+        const selectedRankDisplayInput = document.getElementById('selectedRankDisplay');
+        const selectedRankValueInput = document.getElementById('selectedRankValue');
+
+        priceLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                const rankName = this.getAttribute('data-rank');
+                const rankPrice = this.getAttribute('data-price');
+
+                if (selectedRankDisplayInput) {
+                     selectedRankDisplayInput.value = `${rankName} (${rankPrice})`;
+                }
+                if (selectedRankValueInput) {
+                     selectedRankValueInput.value = rankName;
+                }
+                // Otomatik scroll (CSS ile zaten yapılıyor)
+            });
+        });
+
+        // ESKİ Mailto JavaScript kodu KALDIRILDI. Form artık doğrudan action URL'sine gönderilecek.
+        // const orderForm = document.getElementById('order-form');
+        // orderForm.addEventListener('submit', function(event) { ... }); // Bu kısım silindi.
+
     </script>
 </body>
 </html>

@@ -10,8 +10,8 @@
 
     <style>
         :root {
-            --header-height: 90px;
-            --header-shrink-height: 60px;
+            --header-height: 90px; /* Header'ın başlangıç yüksekliği */
+            --header-shrink-height: 60px; /* Header'ın küçülmüş yüksekliği */
         }
 
         html { scroll-behavior: smooth; }
@@ -48,7 +48,7 @@
             text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
         #contact-for-payment h2 { margin-top: 0; margin-bottom: 25px; color: #55FF55; font-size: 1.8em; }
-        #feedback-section h2 { margin-top: 0; margin-bottom: 25px; color: #FF55FF; font-size: 1.8em; } /* Different color for feedback title */
+        #feedback-section h2 { margin-top: 0; margin-bottom: 25px; color: #FF55FF; font-size: 1.8em; }
 
         #contact-for-payment p, #feedback-section p {
             margin-bottom: 15px; font-size: 1.1em; color: #eee; line-height: 1.7;
@@ -88,12 +88,9 @@
             border: 2px solid #bd7d00; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
             cursor: pointer; font-family: 'Press Start 2P', sans-serif; margin-top: 20px;
         }
-        #order-form button:hover, #feedback-form button:hover {
-            background-color: #FFC14D; transform: scale(1.02);
-        }
-        /* Optional: Different button color for feedback form */
+        #order-form button:hover { background-color: #FFC14D; transform: scale(1.02); }
         #feedback-form button { background-color: #FF55FF; border-color: #c700c7;}
-        #feedback-form button:hover { background-color: #ff82ff; }
+        #feedback-form button:hover { background-color: #ff82ff; transform: scale(1.02); }
 
 
         #rank-selection-info { margin-bottom: 20px; font-size: 1.2em; color: #55FFFF; font-weight: bold; text-align: center;}
@@ -111,7 +108,6 @@
         @media (max-width: 900px) { #main-header { flex-direction: column; height: auto !important; padding-bottom: 10px; } body { padding-top: 100px; } }
         @media (max-width: 768px) { #main-header h1 { font-size: 1.5em; } .rank-card { width: 90%; } }
         @media (max-width: 480px) { #main-header h1 { font-size: 1.3em; } #main-header { padding: 8px 15px;} body { padding-top: calc(var(--header-shrink-height) + 10px) ; } }
-
     </style>
 </head>
 <body>
@@ -177,7 +173,10 @@
         <h2>Feedback Form</h2>
         <p>Have feedback or a question? Let us know below. This will be sent to the same support team as rank orders.</p>
 
-        <form id="feedback-form" action="https://formsubmit.co/muhammed251210@gmail.com" method="POST"> <input type="hidden" name="_subject" value="New Feedback/Inquiry from Game.Ru Site"> <input type="hidden" name="_captcha" value="false">
+        <form id="feedback-form" action="https://formsubmit.co/muhammed251210@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Feedback/Inquiry from Game.Ru Site (JS)">
+            <input type="hidden" name="_captcha" value="false">
+
             <label for="feedbackMcUsername">Minecraft Username (Optional):</label>
             <input type="text" id="feedbackMcUsername" name="Feedback Minecraft Username" placeholder="Your in-game name (optional)">
 
@@ -190,14 +189,16 @@
             <label for="feedbackMessage">Your Feedback / Message (Required):</label>
             <textarea id="feedbackMessage" name="Feedback Message" rows="6" required placeholder="Enter your feedback, question, or message here..."></textarea>
 
-            <button type="submit">Submit Feedback</button>
+            <button type="submit" id="feedbackSubmitButton">Submit Feedback</button>
         </form>
+        <div id="feedback-status" style="margin-top: 20px; text-align: center; font-size: 1.1em; color: #55FF55;"></div>
     </section>
     <footer>
         <p>Contact: <span>www.gameru.com@gmail.com</span> | &copy; 2025 Game.Ru Server - All rights reserved.</p>
     </footer>
 
     <script>
+        // --- Header Shrink & Scroll to Top Button ---
         const header = document.getElementById("main-header");
         const scrollTopBtn = document.getElementById("scrollTopBtn");
         const shrinkThreshold = 50;
@@ -220,10 +221,11 @@
           window.scrollTo({top: 0, behavior: 'smooth'});
         });
 
+        // --- Update Selected Rank in Order Form ---
         const priceLinks = document.querySelectorAll('.price-link');
         const selectedRankDisplayInput = document.getElementById('selectedRankDisplay');
         const selectedRankValueInput = document.getElementById('selectedRankValue');
-        const rankDisplaySpan = document.getElementById('rankDisplay');
+        const rankDisplaySpan = document.getElementById('rankDisplay'); // For the text span in "Order Information"
 
         priceLinks.forEach(link => {
             link.addEventListener('click', function(event) {
@@ -237,12 +239,66 @@
                 if (selectedRankValueInput) {
                      selectedRankValueInput.value = rankName;
                 }
-                if (rankDisplaySpan) {
+                if (rankDisplaySpan) { 
                     rankDisplaySpan.textContent = rankText;
                 }
                 // Smooth scroll to #contact-for-payment is handled by href in HTML
             });
         });
+
+        // --- JavaScript for AJAX Feedback Form Submission ---
+        const feedbackForm = document.getElementById('feedback-form');
+        const feedbackStatusDiv = document.getElementById('feedback-status');
+        const feedbackSubmitButton = document.getElementById('feedbackSubmitButton');
+
+        if (feedbackForm) {
+            feedbackForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(feedbackForm);
+                const originalButtonText = feedbackSubmitButton.textContent;
+                feedbackSubmitButton.disabled = true;
+                feedbackSubmitButton.textContent = 'Sending...';
+                feedbackStatusDiv.textContent = ''; // Clear previous messages
+                feedbackStatusDiv.style.color = '#FFFF55'; // Yellow for sending
+
+                fetch(feedbackForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Request JSON response from Formsubmit
+                    }
+                })
+                .then(response => {
+                    if (response.ok) { // Usually 200 OK indicates success
+                        return response.json().catch(() => ({})); // Try to parse JSON, if not, empty object
+                    } else {
+                        // If server responds with an error (e.g., 4xx, 5xx)
+                        // Formsubmit might return an HTML error page, so .json() might fail.
+                        // We can show a generic error or try to get text.
+                        return response.text().then(text => {
+                             throw new Error('Submission failed. Server responded with ' + response.status + ': ' + text.substring(0,100) + '...');
+                        });
+                    }
+                })
+                .then(data => {
+                    // Formsubmit might return {success: true} or just 200 OK.
+                    // response.ok is usually sufficient for success indication.
+                    feedbackStatusDiv.textContent = 'Thank you! We will respond to your message as soon as possible.';
+                    feedbackStatusDiv.style.color = '#55FF55'; // Green for success
+                    feedbackForm.reset(); // Clear the form fields
+                })
+                .catch(error => {
+                    console.error('Error submitting feedback form:', error);
+                    feedbackStatusDiv.textContent = 'Sorry, there was an error submitting your feedback. Please try again later or contact us directly.';
+                    feedbackStatusDiv.style.color = '#FF5555'; // Red for error
+                })
+                .finally(() => {
+                    feedbackSubmitButton.disabled = false;
+                    feedbackSubmitButton.textContent = originalButtonText;
+                });
+            });
+        }
     </script>
 </body>
 </html>

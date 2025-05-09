@@ -53,15 +53,27 @@
         #contact-for-payment strong { color: #FF5555; }
 
         /* Form Stilleri */
-        #order-form { margin-top: 30px; padding-top: 30px; border-top: 1px solid #444; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;}
-        #order-form label { display: block; margin-bottom: 5px; font-weight: bold; color: #ccc; font-size: 1em; }
+        #order-form, #contact-us-form { margin-top: 30px; padding-top: 30px; border-top: 1px solid #444; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;}
+        #order-form label, #contact-us-form label { display: block; margin-bottom: 5px; font-weight: bold; color: #ccc; font-size: 1em; }
         #order-form input[type="text"],
-        #order-form input[type="email"] { width: 100%; padding: 10px; margin-bottom: 15px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #555; border-radius: 4px; color: #fff; font-family: sans-serif; font-size: 1em; box-sizing: border-box; }
-        #order-form input:focus { outline: none; border-color: #55FF55; background-color: rgba(255, 255, 255, 0.15); }
-        #order-form button { display: block; width: 100%; background-color: #FFAA00; color: #111; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: background-color 0.3s ease, transform 0.2s ease; border: 2px solid #bd7d00; box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; font-family: 'Press Start 2P', sans-serif; margin-top: 20px; }
-        #order-form button:hover { background-color: #FFC14D; transform: scale(1.02); }
+        #order-form input[type="email"],
+        #contact-us-form input[type="text"],
+        #contact-us-form input[type="email"],
+        #contact-us-form input[type="tel"], /* Added for GSM */
+        #contact-us-form textarea { width: 100%; padding: 10px; margin-bottom: 15px; background-color: rgba(255, 255, 255, 0.1); border: 1px solid #555; border-radius: 4px; color: #fff; font-family: sans-serif; font-size: 1em; box-sizing: border-box; }
+        #order-form input:focus,
+        #contact-us-form input:focus,
+        #contact-us-form textarea:focus { outline: none; border-color: #55FF55; background-color: rgba(255, 255, 255, 0.15); }
+        #order-form button, #contact-us-form button { display: block; width: 100%; background-color: #FFAA00; color: #111; padding: 12px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.1em; transition: background-color 0.3s ease, transform 0.2s ease; border: 2px solid #bd7d00; box-shadow: 0 2px 4px rgba(0,0,0,0.3); cursor: pointer; font-family: 'Press Start 2P', sans-serif; margin-top: 20px; }
+        #order-form button:hover, #contact-us-form button:hover { background-color: #FFC14D; transform: scale(1.02); }
         #rank-selection-info { margin-bottom: 20px; font-size: 1.2em; color: #55FFFF; font-weight: bold; text-align: center;}
         #rankDisplay { font-style: italic; }
+
+        /* Contact Us Section Style */
+        #contact-us-section { background-color: rgba(15, 15, 15, 0.85); padding: 35px; margin: 50px auto; max-width: 800px; border-radius: 8px; border: 3px solid #555; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        #contact-us-section h2 { margin-top: 0; margin-bottom: 25px; color: #55FFFF; font-size: 1.8em; } /* Changed color for distinction */
+        #contact-us-section p { margin-bottom: 15px; font-size: 1.1em; color: #eee; line-height: 1.7; }
+
 
         /* Footer Stili */
         footer { text-align: center; margin-top: 40px; padding: 20px; background-color: #000000; color: #888; font-size: 0.9em; border-top: 3px solid #333; }
@@ -103,7 +115,7 @@
         <div class="rank-card rank-sponsor"> <h2 class="rank-title">[Sponsor]</h2> <ul class="features"> <li><span class="mc-2 mc-l">All Potentate perks</span></li> <li><span class="mc-2 mc-l">/setrank creative</span></li> <li><span class="mc-f">Special Sponsor role!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="Sponsor" data-price="86.82 USD"><p class="price">86.82 USD</p></a> </div>
         <div class="rank-card rank-op"> <h2 class="rank-title">[OP]</h2> <ul class="features"> <li><span class="mc-4 mc-l">All Sponsor perks</span></li> <li><span class="mc-4 mc-l">/setrank moderator</span></li> <li><span class="mc-f">OP Power!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="OP" data-price="124.03 USD"><p class="price">124.03 USD</p></a> </div>
         <div class="rank-card rank-king"> <h2 class="rank-title">[KING]</h2> <ul class="features"> <li><span class="mc-6 mc-l">All OP perks</span></li> <li><span class="mc-6 mc-l">/setrank admin</span></li> <li><span class="mc-6 mc-l">/effect</span> <span class="mc-7">command</span></li> <li><span class="mc-f">Fit for a King!</span></li> </ul> <a href="#contact-for-payment" class="price-link" data-rank="KING" data-price="186.05 USD"><p class="price">186.05 USD</p></a> </div>
-        </main>
+    </main>
 
     <section id="contact-for-payment">
         <h2>Order Information & Payment Instructions</h2>
@@ -115,9 +127,7 @@
         <hr style="border-color: #444; margin: 20px 0;">
 
         <p style="color: #ccc; font-size: 1em;">Please fill in your details below and click the button to submit your information.</p>
-        <form id="order-form" action="https://formsubmit.co/muhammed251210@gmail.com" method="POST"> <input type="hidden" name="_next" value="https://muhammed251210.github.io/rankthankyou/"> <input type="hidden" name="_subject" value="Yeni Game.Ru Rank Siparişi!">
-
-            <input type="hidden" name="_captcha" value="false">
+        <form id="order-form" action="https://formsubmit.co/muhammed251210@gmail.com" method="POST"> <input type="hidden" name="_next" value="https://muhammed251210.github.io/rankthankyou/"> <input type="hidden" name="_subject" value="New Game.Ru Rank Order!"> <input type="hidden" name="_captcha" value="false">
 
              <label for="mcUsername">Minecraft Username (Required):</label>
              <input type="text" id="mcUsername" name="username" required placeholder="Enter your exact Minecraft name">
@@ -145,6 +155,26 @@
 
     </section>
 
+    <section id="contact-us-section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, please fill out the form below and we'll get back to you as soon as possible.</p>
+
+        <form id="contact-us-form" action="YOUR_FORMSUBMIT_CONTACT_ENDPOINT" method="POST"> <input type="hidden" name="_subject" value="New Contact Message from Game.Ru Site">
+            <input type="hidden" name="_captcha" value="false"> <label for="contactName">First Name (Required):</label>
+            <input type="text" id="contactName" name="First Name" required placeholder="Enter your first name">
+
+            <label for="contactSurname">Last Name (Required):</label>
+            <input type="text" id="contactSurname" name="Last Name" required placeholder="Enter your last name">
+
+            <label for="contactEmailGsm">Email or Phone Number (Required):</label>
+            <input type="text" id="contactEmailGsm" name="Email or GSM" required placeholder="Enter your email or phone number">
+
+            <label for="contactMessage">Message (Required):</label>
+            <textarea id="contactMessage" name="Message" rows="5" required placeholder="Enter your message here"></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
     <footer>
         <p>Contact: <span>www.gameru.com@gmail.com</span> | &copy; 2025 Game.Ru Server - All rights reserved.</p>
     </footer>
@@ -179,25 +209,29 @@
         const priceLinks = document.querySelectorAll('.price-link');
         const selectedRankDisplayInput = document.getElementById('selectedRankDisplay');
         const selectedRankValueInput = document.getElementById('selectedRankValue');
+        const rankDisplaySpan = document.getElementById('rankDisplay'); // For the text span
 
         priceLinks.forEach(link => {
             link.addEventListener('click', function(event) {
+                // Do not prevent default if it's an anchor link to #contact-for-payment
+                // event.preventDefault(); // Removed this line
+
                 const rankName = this.getAttribute('data-rank');
                 const rankPrice = this.getAttribute('data-price');
+                const rankText = `${rankName} (${rankPrice})`;
 
                 if (selectedRankDisplayInput) {
-                     selectedRankDisplayInput.value = `${rankName} (${rankPrice})`;
+                     selectedRankDisplayInput.value = rankText;
                 }
                 if (selectedRankValueInput) {
                      selectedRankValueInput.value = rankName;
                 }
-                // Otomatik scroll (CSS ile zaten yapılıyor)
+                if (rankDisplaySpan) { // Update the span as well
+                    rankDisplaySpan.textContent = rankText;
+                }
+                // Smooth scroll to the form section is handled by the href="#contact-for-payment"
             });
         });
-
-        // ESKİ Mailto JavaScript kodu KALDIRILDI. Form artık doğrudan action URL'sine gönderilecek.
-        // const orderForm = document.getElementById('order-form');
-        // orderForm.addEventListener('submit', function(event) { ... }); // Bu kısım silindi.
 
     </script>
 </body>
